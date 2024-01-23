@@ -3,6 +3,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Inter:400,700&display=swap");
 
 :root {
+  --color-earth-primary: #4EA447;
+  --color-earth-secondary: #26397C;
   --color-primary: #257;
   --color-primary-light: #f0f6f9;
   --color-secondary: #f1f1f1;
@@ -30,30 +32,20 @@ main {
   place-items: center;
 }
 header {
-  margin-block-end: 3.5rem;
+  background-color: var(--color-fff);
+  box-shadow: var(--shadow-light);
 }
-h1 {
-  font-family: var(--ff-primary);
-  font-size: 1.4rem;
-  color: var(--color-tertiary);
+ul {
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
 }
-h1::after {
-  content: "";
+a {
   display: block;
-  width: 10rem;
-  height: 0.3rem;
-  margin: 0.75rem auto 0;
-  background-color: var(--color-quantiary);
-}
-h2 {
-  font-size: 1.4rem;
-  text-transform: capitalize;
-}
-h3 {
-  margin-block-end: 1rem;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  color: var(--color-quantiary);
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: var(--color-earth-secondary);
+  transition: all 0.2s;
 }
 .btn {
   display: inline-block;
@@ -68,96 +60,99 @@ h3 {
   color: var(--color-tertiary);
   transition: all 0.2s;
 }
-.container {
-  width: 80vw;
-  max-width: 39rem;
-  text-align: center;
-}
-.review__container {
-  min-height: 30rem;
-  padding: 1.5rem 2rem;
-  border-radius: 0.5rem;
-  text-align: center;
-  background-color: var(--color-fff);
-  box-shadow: var(--shadow-light);
-}
-.img__container {
-  position: relative;
-  width: 9rem;
-  height: 9rem;
-  margin: 0 auto 1.5rem;
-}
-.img__container::before {
-  content: "";
+.visually-hidden {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
   position: absolute;
-  top: -0.25rem;
-  right: -0.5rem;
-  width: 100%;
-  border-radius: 50%;
-  background-color: var(--color-quantiary);
-  /* used I believe because of OG img formatting? */
-  height: 100%;
+  white-space: nowrap;
+  width: 1px;
 }
-.img__container::after {
-  content: "\f10e";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  background-color: var(--color-quantiary);
-  color: var(--color-fff);
+.header__social-container {
+  display: none;
+  width: 14rem;
 }
 img {
   position: relative;
-  border-radius: 50%;
-  /* used I believe because of OG img formatting? */
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 14rem;
 }
-#info {
-  min-height: 11rem;
-  margin-bottom: 0.75rem;
-}
-.btn__prev-btn,
-.btn__next-btn {
-  border-color: transparent;
-  margin: 0 0.5rem;
+.nav__mobile-toggle {
   cursor: pointer;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   background-color: transparent;
-  color: var(--color-quantiary);
+  border-color: transparent;
+  color: var(--color-earth-secondary);
   transition: all 0.2s linear;
 }
-.btn__random-btn {
-  padding: 0.25rem 0.5rem;
-  border-color: var(--color-primary);
-  border-radius: 0.5rem;
-  margin-top: 0.5rem;
-  cursor: pointer;
-  background-color: var(--color-primary-light);
-  color: var(--color-primary);
-  transition: all 0.2s linear;
+.fab {
+  padding: 0.7rem;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: all 0.2s;
 }
 
+@media(max-width: 768px) {
+  .header__mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  .nav__main {
+    display: none;
+  }
+  .nav__mobile-toggle__active {
+    transform: rotate(-90deg);
+  }
+  .nav__mobile-nav__show {
+    display: block;
+  }
+  .nav__main ul li a {
+    padding: 0.5rem 1rem;
+  }
+}
 @media(min-width: 641px) {
   h1 {
     font-size: 2rem;
   }
-  #info {
-    min-height: 7rem;
+  img {
+    width: 16rem;
+  }
+}
+@media(min-width: 769px) {
+  ul {
+    display: flex;
+  }
+  nav {
+    width: 25rem;
+  }
+  .header__container {
+    max-width: 80rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+  .nav__mobile-toggle {
+    display: none;
+  }
+}
+@media(min-width: 1025px) {
+  .header__social-container {
+    display: block;
   }
 }
 @media(hover: hover) and (pointer: fine) {
-  .btn__random-btn:hover,
-  .btn__random-btn:focus-visible {
-    background-color: var(--color-primary);
-    color: var(--color-primary-light);
+  a:hover,
+  a:focus-visible {
+    text-decoration-line: underline;
+    text-underline-position: under;
+    color: var(--color-earth-primary);
+  }
+  .fab:hover,
+  .fab:focus-visible {
+    background-color: var(--color-earth-primary);
+    color: var(--color-fff);
   }
 }
